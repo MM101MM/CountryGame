@@ -77,7 +77,52 @@ vk.updates.hear(/9084b718230f172bde6de1ed2ab01423bf77cd1ad68bfae62638e1529e4266c
     Tykaev_balance = Tykaev_balance + Tykaev_oil*100000;
     context.send("Готово пидор")
 });
-vk.updates.startPolling().then(() =>{ 
-console.log ('[BOT] —> Бот запущен!') 
-})
-vk.updates.start().catch(console.error);
+
+//НАЧАЛО МИША//////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+vk.updates.hear(/89964535/i, context => { 
+    context.send('Игрок: Mihail Tykaev') 
+    context.send("Страна: None") 
+    context.send("Правитель: None") 
+    context.send("None") 
+    context.send("None") 
+    context.send(Tykaev_balance + " <---Баланс") 
+    context.send(Tykaev_factory + " <---Фабрики") 
+    context.send(Tykaev_army + " <---Рекруты") 
+    context.send(Tykaev_tanks + " <---Танковые рекруты") 
+    context.send(Tykaev_oil + " <---Нефтяные вышки") 
+    context.send(Tykaev_oil*100000 + " <---Прибыль") 
+    context.send("Внимание,запущен тестовый режим") 
+    
+    }); 
+    
+    //Покупка МИША 
+    
+    vk.updates.hear(/buy 89964531/i, context => { 
+    if (Tykaev_balance > 500000){ 
+    Tykaev_balance = Tykaev_balance - factory; 
+    Vitya_factory++; 
+    context.send("Успешно купленно")} 
+    
+    if (Tykaev_balance < 500000){ 
+    
+    context.send("Недостаточно средств") 
+    } 
+    }); 
+    //oil 
+    vk.updates.hear(/buy 89964532/i, context => { 
+    if (Tykaev_balance > 500000){ 
+    Tykaev_balance = Tykaev_balance - oil_station; 
+    Vitya_oil++; 
+    context.send("Успешно купленно")} 
+    
+    if (Tykaev_balance < 500000){ 
+    
+    context.send("Недостаточно средств") 
+    } 
+    }); 
+    //КОНЕЦ МИША///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    vk.updates.startPolling().then(() =>{ 
+        console.log ('[BOT] —> Бот запущен!') 
+        })
+        vk.updates.start().catch(console.error);
