@@ -101,7 +101,7 @@ vk.updates.hear(/89964535/i, context => {
     vk.updates.hear(/buy 89964531/i, context => { 
     if (Tykaev_balance > 500000){ 
     Tykaev_balance = Tykaev_balance - factory; 
-    Vitya_factory++; 
+    Tykaev_factory++; 
     context.send("Успешно купленно")} 
     
     if (Tykaev_balance < 500000){ 
@@ -113,7 +113,7 @@ vk.updates.hear(/89964535/i, context => {
     vk.updates.hear(/buy 89964532/i, context => { 
     if (Tykaev_balance > 500000){ 
     Tykaev_balance = Tykaev_balance - oil_station; 
-    Vitya_oil++; 
+    Tykaev_oil++; 
     context.send("Успешно купленно")} 
     
     if (Tykaev_balance < 500000){ 
